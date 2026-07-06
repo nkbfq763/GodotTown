@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://main"]
+
+[ext_resource type="PackedScene" uid="uid://player" path="res://player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://town_map" path="res://town_map.tscn" id="2_town_map"]
+[ext_resource type="Script" path="res://main.gd" id="3_main"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("3_main")
+
+[node name="TownMap" parent="." instance=ExtResource("2_town_map")]
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(320, 240)
+
+[node name="Camera2D" type="Camera2D" parent="Player"]
+position_smoothing_enabled = true
+position_smoothing_speed = 5.0
