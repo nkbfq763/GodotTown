@@ -48,7 +48,7 @@ const HOUSES: Array = [
 ]
 
 const PLAZA := Rect2i(16, 11, 8, 7)     # 中央広場（石畳）
-const ROAD_V := Rect2i(19, 3, 2, 25)    # 南北の道（南端が町の出口）
+const ROAD_V := Rect2i(19, 3, 2, 27)    # 南北の道（南端が町の出口）
 const ROAD_H := Rect2i(4, 14, 33, 2)    # 東西の道
 
 const SPAWN_TILE := Vector2(20, 15)
