@@ -28,10 +28,10 @@ drop shadow on background, text, signature, watermark, cropped, low-res.
 ## 1. プレイヤーキャラ
 
 キャラ設定（`00_game_design.md` §3）:
-- `hero` 主人公: 18歳 男、剣士。快活な少年、短めの茶髪、旅装+片手剣。
-- `childhood_girl` 幼馴染: 18歳 女、僧侶。柔らかな金/亜麻色ロングヘア、白と青のローブ、杖。
-- `otherworld_girl` 異世界の少女: 18歳 女、魔術士。神秘的な銀/白髪、異国風の淡い衣装、ミステリアス。
-- `elder_youth` 年上の青年: 22歳 男、重戦士。落ち着いた黒髪、頼れるリーダー、重装+大剣。
+- `hero` Roland Hartwell（主人公）: 18歳 男、剣士。快活な少年、短めの茶髪、旅装+片手剣。
+- `childhood_girl` Fiona Merrick（幼馴染）: 18歳 女、僧侶。柔らかな金/亜麻色ロングヘア、白と青のローブ、杖。
+- `otherworld_girl` Selene Aurelis（異世界の少女）: 18歳 女、魔術士。神秘的な銀/白髪、異国風の淡い衣装、ミステリアス。
+- `elder_youth` Gareth Vaughn（年上の青年）: 22歳 男、重戦士。落ち着いた黒髪、頼れるリーダー、重装+大剣。
 
 ### 1-1. フィールド歩行シート（各キャラ共通レイアウト）
 ```
