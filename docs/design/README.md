@@ -10,6 +10,9 @@
 | [`01_asset_list.md`](01_asset_list.md) | 必要素材リスト | AssetManager |
 | [`02_asset_prompts.md`](02_asset_prompts.md) | 外部AI向け素材生成プロンプト | AssetManager |
 | [`03_programmer_spec.md`](03_programmer_spec.md) | 最初の実装仕様書（Phase 1） | Programmer |
+| [`04_tales_reference.md`](04_tales_reference.md) | テイルズ オブ エターニア設計分析（参考） | 全員 |
+| [`05_battle_system.md`](05_battle_system.md) | 戦闘システム(LMBS)詳細仕様（再設計） | Programmer |
+| [`06_battle_assets_pixellab.md`](06_battle_assets_pixellab.md) | 戦闘アセットのPixelLab.ai向けプロンプト | AssetManager |
 
 ## エージェント体制と進行ルール
 ```
