@@ -13,6 +13,7 @@
 | [`04_tales_reference.md`](04_tales_reference.md) | テイルズ オブ エターニア設計分析（参考） | 全員 |
 | [`05_battle_system.md`](05_battle_system.md) | 戦闘システム(LMBS)詳細仕様（再設計） | Programmer |
 | [`06_battle_assets_pixellab.md`](06_battle_assets_pixellab.md) | 戦闘アセットのPixelLab.ai向けプロンプト | AssetManager |
+| [`07_battle_backgrounds.md`](07_battle_backgrounds.md) | 戦闘背景パターンの生成プロンプト | AssetManager |
 
 ## エージェント体制と進行ルール
 ```
