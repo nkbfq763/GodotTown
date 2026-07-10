@@ -123,6 +123,16 @@ water edge, fence, flowers. Tileable/seamless edges.
 [+ STYLE] [+ NEGATIVE]
 ```
 
+### 3-1b. 町オブジェクト (`town_objects`)
+```
+A set of top-down RPG village objects, Tales of Eternia style, anime fantasy,
+transparent background, evenly spaced on a grid. Rustic pastoral farming village.
+Include: cottage with red-brown triangular roof, larger house, well, wooden fence,
+flower bed, signboard, water wheel, wooden cart, barrels, lamp post.
+[+ STYLE] [+ NEGATIVE]
+```
+用途: 始まりの町「エルデン村」の建物/装飾（`00_game_design.md` §5.1）。
+
 ### 3-2. フィールドタイルセット (`field_tileset`)
 ```
 A top-down RPG overworld field tileset, anime fantasy, 32x32 tiles on a grid.
