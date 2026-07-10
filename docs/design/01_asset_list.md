@@ -15,13 +15,20 @@
 
 ## 1. キャラクター（プレイヤー）
 
+キャラクター4名: `hero`(主人公18男/剣士)、`childhood_girl`(幼馴染18女/僧侶)、`otherworld_girl`(異世界18女/魔術士)、`elder_youth`(年上22男/重戦士)。設定は `00_game_design.md` §3 参照。
+
 | ID | 用途 | 仕様 | 想定パス | 優先度 |
 | --- | --- | --- | --- | --- |
-| `warrior_field` | 女戦士・フィールド歩行 | 4方向(下/上/左/右) x 歩行3コマ + 待機1コマ。1コマ 32x48 | `assets/characters/warrior/field.png` | P2 |
-| `warrior_battle` | 女戦士・バトル | 待機/前進/攻撃1-3/被弾/ガード/勝利。横向き基準 64x64 | `assets/characters/warrior/battle.png` | P3 |
-| `priest_field` | 女僧侶・フィールド歩行 | 同上規格 | `assets/characters/priest/field.png` | P2 |
-| `priest_battle` | 女僧侶・バトル | 待機/前進/詠唱/術発動/被弾/勝利 64x64 | `assets/characters/priest/battle.png` | P3 |
+| `hero_field` | 主人公・フィールド歩行 | 4方向(下/上/左/右) x 歩行3コマ + 待機1コマ。1コマ 32x48 | `assets/characters/hero/field.png` | P2 |
+| `hero_battle` | 主人公・バトル | 待機/前進/攻撃1-3/被弾/ガード/勝利。横向き基準 64x64 | `assets/characters/hero/battle.png` | P3 |
+| `childhood_girl_field` | 幼馴染・フィールド歩行 | 同上規格 | `assets/characters/childhood_girl/field.png` | P2 |
+| `childhood_girl_battle` | 幼馴染・バトル | 待機/前進/詠唱/術発動/被弾/勝利 64x64 | `assets/characters/childhood_girl/battle.png` | P3 |
+| `otherworld_girl_field` | 異世界の少女・フィールド歩行 | 同上規格 | `assets/characters/otherworld_girl/field.png` | P3 |
+| `otherworld_girl_battle` | 異世界の少女・バトル | 待機/前進/詠唱/術発動/被弾/勝利 64x64 | `assets/characters/otherworld_girl/battle.png` | P3 |
+| `elder_youth_field` | 年上青年・フィールド歩行 | 同上規格 | `assets/characters/elder_youth/field.png` | P3 |
+| `elder_youth_battle` | 年上青年・バトル | 待機/前進/攻撃1-3/ガード/被弾/勝利 64x64 | `assets/characters/elder_youth/battle.png` | P3 |
 | `*_face` | 会話用立ち絵/顔グラ | 256x256 表情差分(通常/笑/怒/驚) | `assets/characters/<id>/face.png` | P2 |
+| `otherworld_girl_falling` | OP用・落下ポーズ | 空から降ってくる1枚絵(立ち絵) | `assets/characters/otherworld_girl/falling.png` | P3 |
 
 > スプライトシートはグリッド整列（等間隔セル）。セル数・列数は `02_asset_prompts.md` に明記。
 

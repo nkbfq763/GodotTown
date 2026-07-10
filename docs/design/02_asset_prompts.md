@@ -27,36 +27,51 @@ drop shadow on background, text, signature, watermark, cropped, low-res.
 
 ## 1. プレイヤーキャラ
 
-### 1-1. 女戦士 フィールド歩行シート (`warrior_field`)
+キャラ設定（`00_game_design.md` §3）:
+- `hero` 主人公: 18歳 男、剣士。快活な少年、短めの茶髪、旅装+片手剣。
+- `childhood_girl` 幼馴染: 18歳 女、僧侶。柔らかな金/亜麻色ロングヘア、白と青のローブ、杖。
+- `otherworld_girl` 異世界の少女: 18歳 女、魔術士。神秘的な銀/白髪、異国風の淡い衣装、ミステリアス。
+- `elder_youth` 年上の青年: 22歳 男、重戦士。落ち着いた黒髪、頼れるリーダー、重装+大剣。
+
+### 1-1. フィールド歩行シート（各キャラ共通レイアウト）
 ```
-A female warrior sprite sheet for a top-down 2D JRPG, Tales of Eternia style.
-Character: young woman, brown long hair, red light armor dress, small sword, cheerful.
+A <キャラ英語説明> sprite sheet for a top-down 2D JRPG, Tales of Eternia style.
 LAYOUT: grid of 4 rows x 4 columns (16 cells), evenly spaced, each cell 32x48 px.
 Row order: facing DOWN, UP, LEFT, RIGHT.
 Column order: idle, walk-1, walk-2, walk-3.
 Consistent character across all cells, transparent background.
 [+ STYLE tokens] [+ NEGATIVE]
 ```
-日本語: 上→下上左右の順、列→待機/歩1/歩2/歩3。32x48セルの4x4。
+日本語: 行→下上左右、列→待機/歩1/歩2/歩3。32x48セルの4x4。各キャラの `<キャラ英語説明>` は上の設定を英訳して差し込む（例: hero = "a cheerful teenage boy swordsman, short brown hair, traveler outfit, one-handed sword"）。
 
-### 1-2. 女僧侶 フィールド歩行シート (`priest_field`)
-```
-A female priest/healer sprite sheet, same LAYOUT/grid/cell-size as the warrior sheet.
-Character: young woman, dark hair, white-and-blue robe, wooden staff, gentle expression.
-[same LAYOUT 4x4, 32x48] [+ STYLE] [+ NEGATIVE]
-```
-
-### 1-3. バトル用シート (`warrior_battle` / `priest_battle`)
+### 1-2. バトル用シート（前衛=剣/重戦士）
 ```
 A side-view battle sprite sheet for a 2D action JRPG (Tales of Eternia LMB style).
-Character: <女戦士 or 女僧侶, 上と同一デザイン>, facing RIGHT.
+Character: <hero or elder_youth, 上と同一デザイン>, facing RIGHT.
 LAYOUT: grid 2 rows x 4 columns (8 cells), evenly spaced, each cell 64x64 px.
 Cells in order: idle, step-forward, attack-1, attack-2, attack-3, guard, hurt, victory.
-(priest: replace attack-2/3 with cast-charge / cast-release)
 [+ STYLE] [+ NEGATIVE]
 ```
 
-### 1-4. 顔グラフィック / 立ち絵 (`*_face`)
+### 1-3. バトル用シート（後衛/術=僧侶・魔術士）
+```
+A side-view battle sprite sheet for a 2D action JRPG, Tales of Eternia style.
+Character: <childhood_girl or otherworld_girl, 上と同一デザイン>, facing RIGHT.
+LAYOUT: grid 2 rows x 4 columns (8 cells), evenly spaced, each cell 64x64 px.
+Cells in order: idle, step-forward, cast-charge, cast-release, staff-swing, guard, hurt, victory.
+[+ STYLE] [+ NEGATIVE]
+```
+
+### 1-4. オープニング用 落下ポーズ (`otherworld_girl_falling`)
+```
+A single full-body illustration of the otherworld girl falling from the sky,
+Tales of Eternia style, arms slightly outstretched, hair and clothes flowing upward,
+soft light around her. Transparent background, no ground.
+Character: <otherworld_girl 設定と同一デザイン>. [+ STYLE] [+ NEGATIVE]
+```
+用途: OPで空から降ってくる演出（主人公が抱きとめる）。
+
+### 1-5. 顔グラフィック / 立ち絵 (`*_face`)
 ```
 A character portrait bust for a JRPG dialogue window, Tales of Eternia style.
 Character: <キャラ説明>. Head and shoulders, facing slightly to the side.

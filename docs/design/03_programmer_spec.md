@@ -7,10 +7,14 @@
 ---
 
 ## 0. 現状（P0 完了分）
-- `character_select.tscn` (main_scene): warrior/priest 選択 → `GameData` に格納 → `main.tscn` へ。
+- `character_select.tscn` (現main_scene): warrior/priest 選択 → `GameData` に格納 → `main.tscn` へ。
+  → **この選択方式は廃止**。主人公固定のオープニングに置き換える（T2）。warrior/priestは踏襲せず新規4キャラを作成。
 - `main.tscn`: `TownMap`(背景1枚絵+矩形コリジョン) + `Player`。
 - `player.gd`: 8方向移動、`AnimatedSprite2D`、スプライトはコード描画（暫定）。
 - `game_data.gd`: autoload。選択キャラを保持。
+
+> キャラは新規4名: `hero`/`childhood_girl`/`otherworld_girl`/`elder_youth`（設定は `00_game_design.md` §3）。
+> P1の操作キャラは **主人公(`hero`)固定**。
 
 ---
 
@@ -22,10 +26,13 @@
   - `window/stretch/mode="canvas_items"`, `aspect="keep"`, integer scale 推奨。
 - **受け入れ**: 起動時にタイトル/選択画面が16:9で崩れず表示される。
 
-### T2. タイトルシーン `title.tscn`
-- New Game / Continue(仮・無効可) ボタン。New → `character_select.tscn`。
-- `project.godot` の `run/main_scene` を `title.tscn` に変更。
-- **受け入れ**: 起動→タイトル→New→キャラ選択→町、まで一連で遷移できる。
+### T2. タイトル + オープニング（キャラ選択の廃止）
+- `title.tscn`: New Game / Continue(仮・無効可) ボタン。`run/main_scene` を `title.tscn` に変更。
+- **既存 `character_select.tscn`/`.gd` は削除**（または `opening.tscn` へ置換）。warrior/priest選択は行わない。
+- New → `opening.tscn`(導入イベント) → 町(`main.tscn`)。
+  - オープニングは「空から `otherworld_girl` が落下 → 主人公が抱きとめる」導入。P1では**簡易演出（立ち絵/テキスト送り）でよい**（本格演出はP2以降）。
+- 主人公(`hero`)の `CharacterData` を新規作成し `GameData.party` の先頭に設定（コードで生成 or `.tres`）。
+- **受け入れ**: 起動→タイトル→New→オープニング→町、まで一連で遷移でき、主人公が操作できる。
 
 ### T3. フィールドシーン `field.tscn`
 - 町(`main.tscn`)の出口(Area2D)に触れると `field.tscn` へ遷移。逆も可（相互遷移）。
@@ -61,8 +68,7 @@
 
 ```
 res://
-├─ title.tscn / title.gd                (T2)
-├─ character_select.tscn/.gd            (既存)
+├─ title.tscn/.gd  /  opening.tscn/.gd  (T2, 旧character_selectを置換・削除)
 ├─ field/
 │   ├─ main.tscn (=町) / main.gd        (既存, 出口Area2D追加)
 │   ├─ field.tscn / field.gd            (T3)
@@ -134,7 +140,7 @@ damage = max(1, attacker.attack * power - defender.defense)   # power: 通常攻
 ---
 
 ## 8. 完了の定義（P1 DoD）
-- [ ] 起動→タイトル→キャラ選択→町→フィールド→(敵接触)→バトル→勝利→フィールド、が一連で動く
+- [ ] 起動→タイトル→オープニング→町→フィールド→(敵接触)→バトル→勝利→フィールド、が一連で動く
 - [ ] HUDにHP/TPが表示され、ダメージで減る
 - [ ] 敵は `.tres` データから生成される
 - [ ] 16:9で表示が崩れない
