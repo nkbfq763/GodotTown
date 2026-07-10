@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="town"
-run/main_scene="res://character_select.tscn"
+run/main_scene="res://title.tscn"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -22,7 +22,12 @@ GameData="*res://game_data.gd"
 [display]
 
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
+display/window/size/viewport_width=640
+display/window/size/viewport_height=360
+display/window/size/window_width_override=1280
+display/window/size/window_height_override=720
+window/stretch/aspect="keep"
+window/stretch/scale_mode="integer"
 
 [input]
 

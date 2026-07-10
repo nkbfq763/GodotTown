@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://battle.gd" id="1"]
+[ext_resource type="PackedScene" path="res://ui/hud.tscn" id="2"]
+
+[node name="Battle" type="Node2D"]
+script = ExtResource("1")
+
+[node name="Background" type="ColorRect" parent="."]
+offset_right = 640.0
+offset_bottom = 360.0
+color = Color(0.12, 0.32, 0.2, 1)
+mouse_filter = 2
+
+[node name="Ground" type="ColorRect" parent="."]
+offset_left = 30.0
+offset_top = 270.0
+offset_right = 610.0
+offset_bottom = 320.0
+color = Color(0.42, 0.3, 0.2, 1)
+mouse_filter = 2
+
+[node name="Hero" type="ColorRect" parent="."]
+offset_left = 130.0
+offset_top = 190.0
+offset_right = 180.0
+offset_bottom = 270.0
+color = Color(0.8, 0.35, 0.3, 1)
+
+[node name="EnemyA" type="ColorRect" parent="."]
+offset_left = 450.0
+offset_top = 195.0
+offset_right = 500.0
+offset_bottom = 260.0
+color = Color(0.2, 0.8, 0.45, 1)
+
+[node name="EnemyList" type="VBoxContainer" parent="."]
+offset_left = 400.0
+offset_top = 20.0
+offset_right = 610.0
+offset_bottom = 100.0
+
+[node name="Enemy1" type="Label" parent="EnemyList"]
+layout_mode = 2
+text = "Enemy"
+
+[node name="Enemy2" type="Label" parent="EnemyList"]
+layout_mode = 2
+text = ""
+
+[node name="Enemy3" type="Label" parent="EnemyList"]
+layout_mode = 2
+text = ""
+
+[node name="Status" type="Label" parent="."]
+offset_left = 40.0
+offset_top = 325.0
+offset_right = 600.0
+offset_bottom = 345.0
+text = "Press Enter / Space to attack"
+
+[node name="Result" type="Label" parent="."]
+offset_left = 180.0
+offset_top = 120.0
+offset_right = 460.0
+offset_bottom = 180.0
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="HUD" parent="." instance=ExtResource("2")]
