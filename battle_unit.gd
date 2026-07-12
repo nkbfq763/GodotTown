@@ -162,7 +162,9 @@ func request_attack() -> void:
 
 func request_guard(held: bool) -> void:
 	guard_requested = held
-	if not held and state == State.GUARD:
+	if held and state in [State.IDLE, State.MOVE] and absf(move_intent) < 0.01:
+		_set_state(State.GUARD)
+	elif not held and state == State.GUARD:
 		_set_state(State.IDLE)
 
 func request_step() -> void:
@@ -223,6 +225,12 @@ func update_visual() -> void:
 	if not sprite:
 		return
 	sprite.flip_h = not facing_right
+	if state == State.GUARD:
+		if sprite.animation != "cast":
+			sprite.play("cast")
+		sprite.frame = 0
+		sprite.pause()
+		return
 	var animation := "idle"
 	match state:
 		State.MOVE:
@@ -235,9 +243,6 @@ func update_visual() -> void:
 			animation = "attack2"
 		State.ATTACK3:
 			animation = "attack3"
-		State.GUARD:
-			# B1 has no guard frame; cast is the closest defensive pose.
-			animation = "cast"
 		State.HURT:
 			animation = "hurt"
 		State.DOWN, State.KO:
