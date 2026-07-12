@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" path="res://ui/hud.tscn" id="4_hud"]
 
 [sub_resource type="RectangleShape2D" id="ExitShape"]
-size = Vector2(100, 24)
+size = Vector2(180, 28)
 
 [node name="Main" type="Node2D"]
 script = ExtResource("3_main")
@@ -14,14 +14,19 @@ script = ExtResource("3_main")
 [node name="TownMap" parent="." instance=ExtResource("2_town_map")]
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
-position = Vector2(320, 240)
+position = Vector2(768, 900)
+scale = Vector2(2, 2)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
 position_smoothing_speed = 5.0
+limit_left = 0
+limit_top = 0
+limit_right = 1536
+limit_bottom = 1024
 
 [node name="FieldExit" type="Area2D" parent="."]
-position = Vector2(320, 465)
+position = Vector2(768, 972)
 collision_layer = 2
 collision_mask = 1
 
