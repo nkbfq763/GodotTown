@@ -20,25 +20,11 @@ offset_bottom = 320.0
 color = Color(0.42, 0.3, 0.2, 1)
 mouse_filter = 2
 
-[node name="Hero" type="ColorRect" parent="."]
-offset_left = 130.0
-offset_top = 190.0
-offset_right = 180.0
-offset_bottom = 270.0
-color = Color(0.8, 0.35, 0.3, 1)
-
-[node name="EnemyA" type="ColorRect" parent="."]
-offset_left = 450.0
-offset_top = 195.0
-offset_right = 500.0
-offset_bottom = 260.0
-color = Color(0.2, 0.8, 0.45, 1)
-
 [node name="EnemyList" type="VBoxContainer" parent="."]
-offset_left = 400.0
-offset_top = 20.0
-offset_right = 610.0
-offset_bottom = 100.0
+offset_left = 390.0
+offset_top = 18.0
+offset_right = 625.0
+offset_bottom = 125.0
 
 [node name="Enemy1" type="Label" parent="EnemyList"]
 layout_mode = 2
@@ -52,18 +38,32 @@ text = ""
 layout_mode = 2
 text = ""
 
+[node name="TargetMarker" type="Label" parent="."]
+offset_right = 24.0
+offset_bottom = 24.0
+theme_override_colors/font_color = Color(1, 0.9, 0.2, 1)
+text = "^"
+
+[node name="Combo" type="Label" parent="."]
+offset_left = 270.0
+offset_top = 30.0
+offset_right = 370.0
+offset_bottom = 60.0
+theme_override_font_sizes/font_size = 22
+horizontal_alignment = 1
+
 [node name="Status" type="Label" parent="."]
-offset_left = 40.0
+offset_left = 30.0
 offset_top = 325.0
-offset_right = 600.0
-offset_bottom = 345.0
-text = "Press Enter / Space to attack"
+offset_right = 610.0
+offset_bottom = 350.0
+text = "Arrows: move   J: attack   K: guard   L: step   Space: jump   Tab: target"
 
 [node name="Result" type="Label" parent="."]
-offset_left = 180.0
+offset_left = 175.0
 offset_top = 120.0
-offset_right = 460.0
-offset_bottom = 180.0
+offset_right = 465.0
+offset_bottom = 185.0
 theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 

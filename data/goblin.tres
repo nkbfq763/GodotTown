@@ -10,3 +10,6 @@ attack = 8
 defense = 2
 exp = 8
 gald = 10
+attack_interval = 1.8
+aggression = 1.2
+move_speed = 52.0
