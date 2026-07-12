@@ -4,6 +4,7 @@ var character_data: CharacterData
 var party: Array[CharacterData] = []
 var gald: int = 100
 var progress_flags: Dictionary = {}
+var battle_background: String = "res://assets/backgrounds/battle_bg_plains.png"
 var pending_encounter: Array[EnemyData] = []
 var pending_symbol_id: String = ""
 var battle_won: bool = false

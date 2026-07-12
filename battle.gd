@@ -22,6 +22,7 @@ var combo_label: Label
 var status_label: Label
 
 func _ready() -> void:
+	_set_battle_background(GameData.battle_background)
 	hero_data = GameData.get_character_data()
 	if not hero_data:
 		hero_data = load("res://data/hero.tres")
@@ -39,6 +40,12 @@ func _ready() -> void:
 	status_label = $Status
 	_update_target_marker()
 	_refresh_ui()
+
+func _set_battle_background(path: String) -> void:
+	var texture := load(path) as Texture2D
+	if not texture:
+		texture = load("res://assets/backgrounds/battle_bg_plains.png") as Texture2D
+	$Background.texture = texture
 
 func _unhandled_input(event: InputEvent) -> void:
 	if state == BattleState.RESULT:
