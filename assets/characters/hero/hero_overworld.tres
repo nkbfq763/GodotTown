@@ -1,0 +1,100 @@
+[gd_resource type="SpriteFrames" load_steps=9 format=3]
+
+; Atlas cells reuse hero_battle.png:
+; cell 0 = roland_0, cell 1 = roland_11,
+; cells 4-7 = roland_1, roland_2, roland_3, roland_4.
+
+[ext_resource type="Texture2D" path="res://assets/characters/hero/hero_battle.png" id="1_sheet"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1"]
+atlas = ExtResource("1_sheet")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4"]
+atlas = ExtResource("1_sheet")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5"]
+atlas = ExtResource("1_sheet")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6"]
+atlas = ExtResource("1_sheet")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7"]
+atlas = ExtResource("1_sheet")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8"]
+atlas = ExtResource("1_sheet")
+region = Rect2(192, 64, 64, 64)
+
+[resource]
+animations = [
+{
+"frames": [
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1")
+}
+],
+"loop": true,
+"name": &"idle",
+"speed": 6.0
+},
+{
+"frames": [
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7")
+}
+],
+"loop": true,
+"name": &"run",
+"speed": 12.0
+},
+{
+"frames": [
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6")
+},
+{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7")
+}
+],
+"loop": true,
+"name": &"walk",
+"speed": 6.0
+}
+]

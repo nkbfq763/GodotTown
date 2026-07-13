@@ -1,24 +1,31 @@
 extends CharacterBody2D
 
 const SPRITE_SIZE := Vector2i(32, 48)
+const HERO_OVERWORLD_FRAMES: SpriteFrames = preload("res://assets/characters/hero/hero_overworld.tres")
 
 @export var character_data: CharacterData
 
 var speed: float
+var walk_speed: float
 var animated_sprite: AnimatedSprite2D
-var _facing := "down"
+var _facing := "right"
+var _uses_overworld_frames := false
 
 func _ready() -> void:
 	animated_sprite = $AnimatedSprite2D
 	
 	if not character_data and GameData.get_character_data():
 		character_data = GameData.get_character_data()
+	if not character_data:
+		character_data = load("res://data/hero.tres") as CharacterData
 	
 	if character_data:
 		speed = character_data.speed
+		walk_speed = speed * 0.5
 		setup_sprite()
 	else:
 		speed = 150.0
+		walk_speed = 75.0
 
 func _physics_process(_delta: float) -> void:
 	var direction := Vector2.ZERO
@@ -39,16 +46,21 @@ func _physics_process(_delta: float) -> void:
 			_set_facing("right")
 		elif direction.x < 0:
 			_set_facing("left")
-		elif direction.y > 0:
-			_set_facing("down")
-		elif direction.y < 0:
-			_set_facing("up")
-		
-		_play_animation("walk_" + _facing)
+
+		var walking := Input.is_action_pressed("walk_mod")
+		if _uses_overworld_frames:
+			_play_animation("walk" if walking else "run")
+		else:
+			if direction.y > 0:
+				_set_facing("down")
+			elif direction.y < 0:
+				_set_facing("up")
+			_play_animation("walk_" + _facing)
+		velocity = direction * (walk_speed if walking else speed)
 	else:
-		_play_animation("idle_" + _facing)
-	
-	velocity = direction * speed
+		_play_animation("idle" if _uses_overworld_frames else "idle_" + _facing)
+		velocity = Vector2.ZERO
+
 	move_and_slide()
 
 func _set_facing(facing: String) -> void:
@@ -61,6 +73,13 @@ func _play_animation(anim_name: String) -> void:
 			animated_sprite.play(anim_name)
 
 func setup_sprite() -> void:
+	if character_data.character_type == "hero":
+		_uses_overworld_frames = true
+		animated_sprite.sprite_frames = HERO_OVERWORLD_FRAMES
+		animated_sprite.offset = Vector2(0, -26)
+		animated_sprite.play("idle")
+		return
+
 	var sprite_texture := create_character_sprite(character_data.character_type)
 	if not sprite_texture:
 		return

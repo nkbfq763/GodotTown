@@ -15,7 +15,7 @@ script = ExtResource("3_main")
 
 [node name="Player" parent="." instance=ExtResource("1_player")]
 position = Vector2(768, 900)
-scale = Vector2(2, 2)
+scale = Vector2(1.5, 1.5)
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
 position_smoothing_enabled = true
