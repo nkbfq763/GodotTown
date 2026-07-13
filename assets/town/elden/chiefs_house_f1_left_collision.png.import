@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq2ayu7cpavl"
-path="res://.godot/imported/outskirts.png-703569bc2803b0e1872aaf6f88c7b6b1.ctex"
+uid="uid://bwjiw4o42vle4"
+path="res://.godot/imported/chiefs_house_f1_left_collision.png-4e146ba4d88fc46bed281416c94fa53c.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/town/elden/outskirts.png"
-dest_files=["res://.godot/imported/outskirts.png-703569bc2803b0e1872aaf6f88c7b6b1.ctex"]
+source_file="res://assets/town/elden/chiefs_house_f1_left_collision.png"
+dest_files=["res://.godot/imported/chiefs_house_f1_left_collision.png-4e146ba4d88fc46bed281416c94fa53c.ctex"]
 
 [params]
 

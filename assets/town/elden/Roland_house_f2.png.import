@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dq2ayu7cpavl"
-path="res://.godot/imported/outskirts.png-703569bc2803b0e1872aaf6f88c7b6b1.ctex"
+uid="uid://clk58d6akko4k"
+path="res://.godot/imported/Roland_house_f2.png-ea77f7195f4627f63624b89b79d34939.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/town/elden/outskirts.png"
-dest_files=["res://.godot/imported/outskirts.png-703569bc2803b0e1872aaf6f88c7b6b1.ctex"]
+source_file="res://assets/town/elden/Roland_house_f2.png"
+dest_files=["res://.godot/imported/Roland_house_f2.png-ea77f7195f4627f63624b89b79d34939.ctex"]
 
 [params]
 
