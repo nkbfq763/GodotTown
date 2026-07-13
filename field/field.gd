@@ -15,4 +15,6 @@ func _ready() -> void:
 
 func _on_town_exit_body_entered(body: Node2D) -> void:
 	if body is CharacterBody2D:
+		GameData.current_town_area = "outskirts"
+		GameData.current_town_arrival_edge = "down"
 		get_tree().change_scene_to_file("res://main.tscn")

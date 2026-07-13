@@ -6,9 +6,14 @@ extends Node2D
 func _ready() -> void:
 	if not GameData.get_character_data():
 		GameData.set_character_data(load("res://data/hero.tres"))
-	if town_map.has_method("get_spawn_point"):
-		player.global_position = town_map.get_spawn_point()
+	town_map.set_player(player)
+	town_map.field_requested.connect(_on_field_requested)
+	town_map.load_area(
+		GameData.current_town_area,
+		GameData.current_town_arrival_edge
+	)
 
-func _on_field_exit_body_entered(body: Node2D) -> void:
-	if body is CharacterBody2D:
-		get_tree().change_scene_to_file("res://field.tscn")
+func _on_field_requested() -> void:
+	GameData.current_town_area = "outskirts"
+	GameData.current_town_arrival_edge = "down"
+	get_tree().change_scene_to_file("res://field.tscn")
