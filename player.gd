@@ -2,13 +2,14 @@ extends CharacterBody2D
 
 const SPRITE_SIZE := Vector2i(32, 48)
 const HERO_OVERWORLD_FRAMES: SpriteFrames = preload("res://assets/characters/hero/hero_overworld.tres")
+const RUN_ANIMATION_SPEED_SCALE := 1.5
 
 @export var character_data: CharacterData
 
 var speed: float
 var walk_speed: float
 var animated_sprite: AnimatedSprite2D
-var _facing := "right"
+var _facing := "down"
 var _uses_overworld_frames := false
 
 func _ready() -> void:
@@ -41,15 +42,12 @@ func _physics_process(_delta: float) -> void:
 	
 	if direction != Vector2.ZERO:
 		direction = direction.normalized()
-		
-		if direction.x > 0:
-			_set_facing("right")
-		elif direction.x < 0:
-			_set_facing("left")
+
+		_update_facing(direction)
 
 		var walking := Input.is_action_pressed("walk_mod")
 		if _uses_overworld_frames:
-			_play_animation("walk" if walking else "run")
+			_play_overworld_locomotion(walking)
 		else:
 			if direction.y > 0:
 				_set_facing("down")
@@ -58,26 +56,57 @@ func _physics_process(_delta: float) -> void:
 			_play_animation("walk_" + _facing)
 		velocity = direction * (walk_speed if walking else speed)
 	else:
-		_play_animation("idle" if _uses_overworld_frames else "idle_" + _facing)
+		if _uses_overworld_frames:
+			_play_overworld_idle()
+		else:
+			_play_animation("idle_" + _facing)
 		velocity = Vector2.ZERO
 
 	move_and_slide()
 
 func _set_facing(facing: String) -> void:
 	_facing = facing
-	animated_sprite.flip_h = facing == "left"
+	animated_sprite.flip_h = facing == "right"
+
+func _update_facing(direction: Vector2) -> void:
+	if absf(direction.x) >= absf(direction.y):
+		_set_facing("right" if direction.x > 0 else "left")
+	elif direction.y > 0:
+		_set_facing("down")
+	else:
+		_set_facing("up")
 
 func _play_animation(anim_name: String) -> void:
 	if animated_sprite.sprite_frames and animated_sprite.sprite_frames.has_animation(anim_name):
 		if animated_sprite.animation != anim_name:
 			animated_sprite.play(anim_name)
 
+func _play_overworld_locomotion(walking: bool) -> void:
+	var animation_name := "walk_side"
+	if _facing == "up":
+		animation_name = "walk_up"
+	elif _facing == "down":
+		animation_name = "walk_down"
+	animated_sprite.speed_scale = 1.0 if walking else RUN_ANIMATION_SPEED_SCALE
+	_play_animation(animation_name)
+
+func _play_overworld_idle() -> void:
+	var animation_name := "idle_side"
+	if _facing == "up":
+		animation_name = "idle_up"
+	elif _facing == "down":
+		animation_name = "idle_down"
+	animated_sprite.speed_scale = 1.0
+	_play_animation(animation_name)
+
 func setup_sprite() -> void:
 	if character_data.character_type == "hero":
 		_uses_overworld_frames = true
 		animated_sprite.sprite_frames = HERO_OVERWORLD_FRAMES
 		animated_sprite.offset = Vector2(0, -26)
-		animated_sprite.play("idle")
+		animated_sprite.speed_scale = 1.0
+		_set_facing(_facing)
+		animated_sprite.play("idle_down")
 		return
 
 	var sprite_texture := create_character_sprite(character_data.character_type)
@@ -86,6 +115,7 @@ func setup_sprite() -> void:
 	
 	animated_sprite.sprite_frames = SpriteFrames.new()
 	animated_sprite.offset = Vector2(0, -8)
+	animated_sprite.speed_scale = 1.0
 	
 	for anim in ["idle_down", "idle_up", "idle_left", "idle_right",
 			"walk_down", "walk_up", "walk_left", "walk_right"]:
